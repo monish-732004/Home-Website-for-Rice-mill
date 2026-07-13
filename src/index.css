@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Artistic Flair Design Palette Overrides */
+  --color-emerald-50: #f5f8f6;
+  --color-emerald-100: #e3ebe8;
+  --color-emerald-200: #cadbd3;
+  --color-emerald-300: #a1beaf;
+  --color-emerald-400: #719b87;
+  --color-emerald-500: #4b7b64;
+  --color-emerald-600: #355f4c;
+  --color-emerald-700: #264a3b;
+  --color-emerald-800: #1b4332;
+  --color-emerald-900: #143225;
+  --color-emerald-950: #0d2118;
+
+  --color-stone-50: #fdfcf8;
+  --color-stone-100: #f5f4ec;
+  --color-stone-200: #ebe7d8;
+  --color-stone-300: #ddd8c3;
+  --color-stone-400: #c4bba0;
+  --color-stone-500: #a89d7f;
+  --color-stone-600: #887c5e;
+  --color-stone-700: #685e46;
+  --color-stone-850: #1b4332;
+  --color-stone-900: #112b20;
+  --color-stone-950: #0a1b14;
+
+  --color-amber-400: #e5c158;
+  --color-amber-500: #d4af37;
+  --color-amber-600: #bca032;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-stone-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-stone-400);
+}
+
+/* Custom Smooth Transitions */
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: var(--color-stone-50);
+  color: var(--color-stone-850);
+  overflow-x: hidden;
+}
+
+/* Calligraphy accents */
+.tamil-glow {
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.1);
+}
