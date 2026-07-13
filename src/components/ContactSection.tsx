@@ -118,7 +118,7 @@ export default function ContactSection() {
               <p className="text-xs text-stone-500">Located on the Kallakurichi highway corridor for rapid truck transit routes.</p>
             </div>
             <a
-              href={APP_INFO.mapsUrl}
+              href={APP_INFO.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-1 bg-stone-100 hover:bg-stone-200 text-stone-700 px-4 py-2 rounded-lg text-xs font-semibold border border-stone-200 transition-colors"
@@ -128,24 +128,18 @@ export default function ContactSection() {
             </a>
           </div>
 
-          {/* High-fidelity custom map placeholder panel */}
-          <div className="aspect-[21/9] bg-stone-50 border border-stone-200 rounded-xl flex flex-col items-center justify-center p-8 text-center relative overflow-hidden group">
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0 bg-[radial-gradient(#0A4224_1px,transparent_1px)] [background-size:16px_16px]" />
-            </div>
-            <div className="space-y-3 z-10 max-w-sm">
-              <div className="w-12 h-12 bg-emerald-50 text-emerald-800 rounded-full flex items-center justify-center mx-auto shadow border border-emerald-100">
-                <MapPin className="w-6 h-6 animate-bounce" />
-              </div>
-              <h4 className="font-serif font-bold text-stone-900 text-sm">Sri Kannika Parameswari Modern Rice Mill</h4>
-              <p className="text-stone-500 text-[11px] leading-relaxed">
-                {APP_INFO.location}
-              </p>
-              <div className="inline-flex items-center space-x-1.5 text-[10px] text-emerald-800 font-mono font-bold bg-emerald-50 px-2.5 py-1 rounded">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Heavy Container Access Approved</span>
-              </div>
-            </div>
+          {/* Interactive Live Google Map */}
+          <div className="aspect-[21/9] w-full border border-stone-200 rounded-xl overflow-hidden shadow-inner relative bg-stone-100 min-h-[300px]">
+            <iframe
+              src="https://maps.google.com/maps?q=Sri%20Kannika%20Parameswari%20Modern%20Rice%20Mill%20Thatchur%20Kallakurichi&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Sri Kannika Parameswari Modern Rice Mill Location Map"
+            />
           </div>
         </div>
       </section>

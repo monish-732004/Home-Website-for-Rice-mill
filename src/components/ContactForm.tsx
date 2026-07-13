@@ -10,6 +10,7 @@ import * as z from 'zod';
 import { ShieldCheck, Mail, Phone, User, AlertCircle, HelpCircle, Loader2, Send } from 'lucide-react';
 import { motion } from 'motion/react';
 import { ContactInput } from '../types';
+import { supabase } from '../supabaseClient';
 
 const indianPhoneRegex = /^[6789]\d{9}$/;
 
@@ -44,14 +45,35 @@ export default function ContactForm() {
 
   const onSubmit = async (data: ContactInput) => {
     setIsSubmitting(true);
-    // Simulate API connection to CMS/Supabase
-    await new Promise(resolve => setTimeout(resolve, 1200));
     const randomTicket = 'SKP-TKT-' + Math.floor(100000 + Math.random() * 900000);
+
+    try {
+      // 1. Try to write to Supabase
+      const { error } = await supabase
+        .from('contact_messages')
+        .insert([
+          {
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            subject: data.subject,
+            message: data.message,
+            status: 'unread'
+          }
+        ]);
+
+      if (error) {
+        console.error('Supabase message write error:', error);
+      }
+    } catch (err) {
+      console.error('Network or client initialization error:', err);
+    }
+
     setTicketId(randomTicket);
     setIsSubmitting(false);
     setIsSubmittedSuccessfully(true);
 
-    // Save locally
+    // 2. Always save locally as fallback
     const existing = JSON.parse(localStorage.getItem('skp_contact_messages') || '[]');
     existing.push({ ...data, id: randomTicket, date: new Date().toISOString() });
     localStorage.setItem('skp_contact_messages', JSON.stringify(existing));

@@ -38,6 +38,7 @@ export default function Navbar({ activeTab, setActiveTab, openDealerModal }: Nav
     { id: 'gallery', label: 'Gallery', tamil: 'புகைப்படங்கள்' },
     { id: 'certifications', label: 'Certifications', tamil: 'சான்றிதழ்கள்' },
     { id: 'quote', label: 'Get a Quote', tamil: 'விலைப்பட்டியல்' },
+    { id: 'dealers', label: 'Dealer Portal', tamil: 'முகவர் தளம்' },
     { id: 'contact', label: 'Contact Us', tamil: 'தொடர்புக்கு' },
   ];
 

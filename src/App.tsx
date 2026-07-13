@@ -19,6 +19,9 @@ import ContactSection from './components/ContactSection';
 import ProductDetailsModal from './components/ProductDetailsModal';
 import EnquiryForm from './components/EnquiryForm';
 import QuoteSection from './components/QuoteSection';
+import DealerPortalSection from './components/DealerPortalSection';
+import WhatsAppFloat from './components/WhatsAppFloat';
+import MobileActionBar from './components/MobileActionBar';
 
 import { Product } from './types';
 import { APP_INFO } from './data';
@@ -60,6 +63,8 @@ export default function App() {
         return <CertificationsSection />;
       case 'quote':
         return <QuoteSection />;
+      case 'dealers':
+        return <DealerPortalSection onNavigate={setActiveTab} />;
       case 'contact':
         return <ContactSection />;
       default:
@@ -182,6 +187,12 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* 3. Floating WhatsApp Integration */}
+      <WhatsAppFloat />
+
+      {/* 4. Sticky Mobile Contact Quick Action Bar */}
+      <MobileActionBar />
     </div>
   );
 }

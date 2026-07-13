@@ -11,6 +11,7 @@ import { ShieldCheck, Mail, Phone, Landmark, AlertCircle, FileCheck2, Loader2, A
 import { motion } from 'motion/react';
 import { PRODUCTS } from '../data';
 import { DealerEnquiryInput } from '../types';
+import { supabase } from '../supabaseClient';
 
 const indianPhoneRegex = /^[6789]\d{9}$/;
 const gstinRegex = /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/;
@@ -77,16 +78,47 @@ export default function EnquiryForm({ onSuccessClose }: EnquiryFormProps) {
 
   const onSubmit = async (data: DealerEnquiryInput) => {
     setIsSubmitting(true);
-    // Simulate API connection to CMS/Supabase
-    await new Promise(resolve => setTimeout(resolve, 1500));
     const randomId = 'SKP-DLR-' + Math.floor(100000 + Math.random() * 900000);
+
+    try {
+      // 1. Try to insert into Supabase
+      const { error } = await supabase
+        .from('dealers')
+        .insert([
+          {
+            id: randomId,
+            business_name: data.businessName,
+            contact_person: data.contactPerson,
+            phone: data.phone,
+            email: data.email,
+            city: data.city,
+            state: data.state,
+            gstin: data.gstin || null,
+            expected_volume: data.expectedVolume,
+            preferred_products: data.preferredProducts,
+            message: data.message || null
+          }
+        ]);
+
+      if (error) {
+        console.error('Supabase write error:', error);
+      }
+    } catch (err) {
+      console.error('Network or client initialization error:', err);
+    }
+
     setSubmissionId(randomId);
     setIsSubmitting(false);
     setIsSubmittedSuccessfully(true);
 
-    // Save submitted local data to localStorage to persistent simulate
+    // 2. Always log to local storage as fallback/redundancy
     const existing = JSON.parse(localStorage.getItem('skp_dealer_enquiries') || '[]');
-    existing.push({ ...data, id: randomId, date: new Date().toISOString() });
+    existing.push({
+      ...data,
+      id: randomId,
+      date: new Date().toISOString(),
+      status: 'pending'
+    });
     localStorage.setItem('skp_dealer_enquiries', JSON.stringify(existing));
   };
 

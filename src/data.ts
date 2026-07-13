@@ -29,13 +29,18 @@ export const APP_INFO = {
   tamilName: 'ஸ்ரீ கன்னிகா பரமேஸ்வரி மாடர்ன் ரைஸ் மில்',
   foundedYear: '2011',
   location: '134, Periyaye Kovil Road, Thachur Post, Kallakurichi, Kallakurichi Dt, Tamil Nadu - 606202',
-  mapsUrl: 'https://share.google/9BhsrGM7miHf5E4Du',
+  mapsLink: 'https://share.google/9BhsrGM7miHf5E4Du',
   phone: '+91 99443 60308',
   altPhone: '+91 94422 84994',
   email: 'info@kannikaricemill.com',
   enquiryEmail: 'dealers@kannikaricemill.com',
   gstNumber: '33ACFPV4181Q1ZX',
+  // NOTE: two different FSSAI numbers have surfaced (this one vs. 12421021000342 in
+  // CERTIFICATIONS below) — needs verification against the real FSSAI license copy.
+  fssai: '12417031001138',
   workingHours: 'Mon - Sun: 9:00 AM - 6:00 PM',
+  taglineEn: 'Royal taste that touches your heart',
+  taglineTa: 'மனதை மயக்கும் சுவை',
   aboutBrief: 'Based in Kallakurichi, Tamil Nadu, we blend centuries-old agricultural wisdom with state-of-the-art Bühler color-sorting technology to deliver rice of unparalleled purity, aroma, and taste.',
 };
 

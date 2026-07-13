@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Phone, Mail, MapPin, Clock, ArrowUpRight, Award, Flame, Heart } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ArrowUpRight, Award, Flame, Heart, Facebook, Instagram, Linkedin, Youtube, MessageSquare } from 'lucide-react';
 import { APP_INFO } from '../data';
 
 interface FooterProps {
@@ -28,6 +28,7 @@ export default function Footer({ setActiveTab, openDealerModal }: FooterProps) {
     { label: 'Facility Gallery', id: 'gallery' },
     { label: 'Certifications', id: 'certifications' },
     { label: 'Get a Quote', id: 'quote' },
+    { label: 'Dealer Portal', id: 'dealers' },
     { label: 'Contact Us', id: 'contact' },
   ];
 
@@ -78,6 +79,55 @@ export default function Footer({ setActiveTab, openDealerModal }: FooterProps) {
           <div className="flex items-center space-x-2 text-[11px] text-amber-500 font-semibold bg-amber-950/30 border border-amber-900/40 py-1.5 px-3 rounded-lg w-fit">
             <Flame className="w-3.5 h-3.5" />
             <span>Celebrating 15+ Years of Purity</span>
+          </div>
+
+          {/* Social Links - NOTE: handles are unverified placeholders, confirm real accounts before launch */}
+          <div className="flex items-center space-x-2.5 pt-1.5">
+            <a
+              href="https://facebook.com/srikannika.ricemill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-stone-800 hover:bg-emerald-800 text-stone-400 hover:text-white rounded-lg flex items-center justify-center border border-stone-700/40 transition-all cursor-pointer"
+              aria-label="Follow us on Facebook"
+            >
+              <Facebook className="w-4 h-4" />
+            </a>
+            <a
+              href="https://instagram.com/srikannika.ricemill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-stone-800 hover:bg-emerald-800 text-stone-400 hover:text-white rounded-lg flex items-center justify-center border border-stone-700/40 transition-all cursor-pointer"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+            <a
+              href="https://linkedin.com/company/sri-kannika-parameswari-rice-mill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-stone-800 hover:bg-emerald-800 text-stone-400 hover:text-white rounded-lg flex items-center justify-center border border-stone-700/40 transition-all cursor-pointer"
+              aria-label="Connect on LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="https://youtube.com/@srikannika.ricemill"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-stone-800 hover:bg-emerald-800 text-stone-400 hover:text-white rounded-lg flex items-center justify-center border border-stone-700/40 transition-all cursor-pointer"
+              aria-label="Subscribe on YouTube"
+            >
+              <Youtube className="w-4 h-4" />
+            </a>
+            <a
+              href={`https://wa.me/919944360308?text=${encodeURIComponent('Hello Sri Kannika Parameswari Rice Mill, I am writing to you from your website social links.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 bg-stone-800 hover:bg-emerald-800 text-stone-400 hover:text-white rounded-lg flex items-center justify-center border border-stone-700/40 transition-all cursor-pointer"
+              aria-label="Contact on WhatsApp"
+            >
+              <MessageSquare className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
@@ -149,7 +199,7 @@ export default function Footer({ setActiveTab, openDealerModal }: FooterProps) {
             </div>
             <a
               id="footer-map-link"
-              href={APP_INFO.mapsUrl}
+              href={APP_INFO.mapsLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-1.5 text-xs text-amber-500 hover:text-amber-400 font-semibold bg-stone-800 hover:bg-stone-750 p-2.5 rounded-lg border border-stone-700/60 transition-all w-full justify-center"
@@ -166,9 +216,25 @@ export default function Footer({ setActiveTab, openDealerModal }: FooterProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
           <div className="text-center sm:text-left space-y-1">
             <p>© {currentYear} Sri Kannika Parameswari Modern Rice Mill. All Rights Reserved.</p>
-            <p className="text-stone-600">GSTIN: {APP_INFO.gstNumber}</p>
+            <p className="text-[10px] text-stone-600">GSTIN: {APP_INFO.gstNumber} | FSSAI Lic No: {APP_INFO.fssai}</p>
           </div>
           <div className="flex items-center justify-center space-x-4">
+            <button
+              onClick={() => {
+                handleNavClick('dealers');
+                setTimeout(() => {
+                  const trigger = document.getElementById('portal-gateway-trigger');
+                  if (trigger) {
+                    trigger.scrollIntoView({ behavior: 'smooth' });
+                    trigger.click();
+                  }
+                }, 300);
+              }}
+              className="hover:text-stone-400 hover:underline transition-colors cursor-pointer text-stone-500 font-medium"
+            >
+              Admin Console
+            </button>
+            <span className="text-stone-700">|</span>
             <span className="hover:text-stone-400 transition-colors cursor-pointer">Quality Policy</span>
             <span className="text-stone-700">|</span>
             <span className="hover:text-stone-400 transition-colors cursor-pointer">Terms & Conditions</span>

@@ -1,0 +1,6 @@
+{
+  "name": "Sri Kannika Parameswari Modern Rice Mill",
+  "description": "Premium modern rice milling brand celebrating Tamil agricultural heritage, high-quality Ponni rice, and state-of-the-art FMCG milling standards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
