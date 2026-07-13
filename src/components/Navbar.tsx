@@ -92,9 +92,9 @@ export default function Navbar({ activeTab, setActiveTab, openDealerModal }: Nav
               className="flex items-center space-x-3 cursor-pointer group"
               onClick={() => handleNavClick('home')}
             >
-              <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center shadow-md shadow-amber-500/15 group-hover:scale-105 transition-all duration-250">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center group-hover:scale-105 transition-all duration-250 overflow-hidden">
                 <img 
-                  className='w-full h-full object-contain rounded-full'
+                  className='w-full h-full object-cover rounded-full'
                   src={logoImg}
                   alt="Sri Kannika Parameswari Rice Mill Logo"
                 />
