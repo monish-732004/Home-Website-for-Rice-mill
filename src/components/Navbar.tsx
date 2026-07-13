@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, Mail, Award, Landmark, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { APP_INFO } from '../data';
+import logoImg from '../assets/logo/logo.png';
 
 interface NavbarProps {
   activeTab: string;
@@ -93,8 +94,9 @@ export default function Navbar({ activeTab, setActiveTab, openDealerModal }: Nav
             >
               <div className="w-10 h-10 bg-amber-500 rounded-full flex items-center justify-center shadow-md shadow-amber-500/15 group-hover:scale-105 transition-all duration-250">
                 <img 
-                  className=''
-                  src='../src/assets/logo/logo.png'
+                  className='w-full h-full object-contain rounded-full'
+                  src={logoImg}
+                  alt="Sri Kannika Parameswari Rice Mill Logo"
                 />
               </div>
               <div className="flex flex-col">
